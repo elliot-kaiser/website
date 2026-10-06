@@ -205,7 +205,7 @@ export default function Resume() {
 
         {/* Footer */}
         <footer className="text-center text-sm text-slate-500 pt-8 border-t border-slate-900">
-          <p>© {new Date().getFullYear()} Elliot Kaiser. Built with Next.js &amp; Tailwind CSS.</p>
+          <p>© {new Date().getFullYear()} Elliot Kaiser.</p>
         </footer>
       </div>
     </main>

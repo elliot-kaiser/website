@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Elliot Kaiser | Mechanical Engineering Portfolio",
     description:
       "Mechanical Engineering student at UofT with hands-on experience in embedded systems, CAD design, and full-stack software development.",
-    url: "https://elliotkaiser.dev",
+    url: "https://elliotkaiser.me",
     siteName: "Elliot Kaiser",
     locale: "en_US",
     type: "website",
