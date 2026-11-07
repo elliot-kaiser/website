@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 
 // ---------- Resume content (edit here; layout below renders it) ----------
 
-const experience = [
+const experience: RoleProps[] = [
   {
     title: "Undergraduate Research Assistant – Systems & Hardware",
     dates: "Oct 2026 – Present",
@@ -37,7 +37,7 @@ const experience = [
   },
 ];
 
-const designTeams = [
+const designTeams: RoleProps[] = [
   {
     title: "Mechanical Engineer",
     dates: "Sep 2026 – Present",
@@ -61,7 +61,7 @@ const designTeams = [
   },
 ];
 
-const projects = [
+const projects: { name: string; stack: string; dates: string; bullets: string[] }[] = [
   {
     name: "Smart Scale",
     stack: "SOLIDWORKS, OrcaSlicer, Python, Flask, PostgreSQL, Raspberry Pi",
@@ -81,7 +81,7 @@ const projects = [
   },
 ];
 
-const skills = [
+const skills: [string, string][] = [
   ["Mechanical Design", "SOLIDWORKS (CSWA), ANSYS Mechanical (FEA), OnShape, AutoCAD, GD&T, DFM/A, Load Analysis"],
   ["Embedded & Test", "ESP32, Arduino, Raspberry Pi, Sensor Integration, Data Acquisition, Circuit Assembly, Soldering"],
   ["Software", "Python, C/C++, MATLAB, Git, OriginPro, Godot, Java, JavaScript/React, Flask, PostgreSQL"],
@@ -90,12 +90,20 @@ const skills = [
 
 // ---------- Layout ----------
 
+type RoleProps = {
+  title: string;
+  dates: string;
+  org: string;
+  location: string;
+  bullets: string[];
+};
+
 const sectionTitle =
   "text-xl font-bold uppercase tracking-wider text-green-400 border-b border-zinc-800 pb-2";
 const bulletList =
   "list-disc list-outside ml-5 space-y-1.5 text-sm text-zinc-300 pt-1 leading-relaxed";
 
-function Role({ title, dates, org, location, bullets }) {
+function Role({ title, dates, org, location, bullets }: RoleProps) {
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap justify-between items-baseline gap-2">
