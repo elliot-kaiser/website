@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 type NavProps = {
-  active: "projects" | "resume";
+  /** Highlighted link; omit on pages that aren't Projects or Resume (e.g. 404) */
+  active?: "projects" | "resume";
   /** Optional extra element rendered to the right of the nav links */
   action?: React.ReactNode;
 };

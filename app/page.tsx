@@ -1,6 +1,6 @@
-import React from "react";
 import Image from "next/image";
 import Nav from "./components/Nav";
+import ModelViewer from "./components/ModelViewer";
 
 export default function Home() {
   return (
@@ -10,9 +10,9 @@ export default function Home() {
         <Nav active="projects" />
         {/* Header / Hero */}
         <header className="border-b border-zinc-800 pb-10 space-y-4">
-          <p className="text-3xl sm:text-4xl font-bold text-white">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white">
             Mechanical Engineering Portfolio
-          </p>
+          </h1>
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="mailto:elliotk1@outlook.com"
@@ -38,6 +38,73 @@ export default function Home() {
             </a>
           </div>
         </header>
+
+        {/* Project: UofT ART Drivetrain */}
+        <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                Rover Drivetrain &amp; Axle Design
+              </h2>
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-zinc-950 text-zinc-400 border border-zinc-700">
+                UofT Autonomous Rover Team
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {["SolidWorks", "ANSYS Mechanical", "FEA", "Load Analysis", "Drivetrain Design"].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs font-medium px-2.5 py-1 rounded bg-zinc-800 text-zinc-300 border border-zinc-700"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Interactive 3D model + FEA result */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden p-3 flex flex-col items-center">
+              <ModelViewer
+                src="/models/art-drivetrain.glb"
+                alt="SOLIDWORKS assembly of the rover drive module: gearmotor, shaft coupler, hex axle, bearings, hub, and wheel"
+                className="w-full h-52"
+              />
+              <span className="text-xs text-zinc-400 mt-2">
+                Drive Module Assembly (drag to rotate)
+              </span>
+            </div>
+            <div className="bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden p-3 flex flex-col items-center">
+              <div className="relative w-full h-52">
+                <Image
+                  src="/images/artShaftFEA.png"
+                  alt="ANSYS von Mises stress plot of the hex drive shaft, peak 91.3 MPa at the shoulder"
+                  fill
+                  className="object-contain rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <span className="text-xs text-zinc-400 mt-2">
+                ANSYS Von Mises Stress in Custom Hex Drive Shaft
+              </span>
+            </div>
+          </div>
+
+          <ul className="list-disc list-outside ml-5 space-y-3 text-zinc-300 leading-relaxed">
+            <li>
+              Derived first-principles load cases (traction, incline, acceleration) from competition rules to size motors, wheels, bearings, and drive type for a 15–40 kg 2WD rover within budget.
+            </li>
+            <li>
+              Designed a custom-machined 1/2&quot; hex drive shaft linking the gearmotor (via shaft coupler) to the bearing-supported wheel hub, and iterated it with ANSYS Mechanical FEA across all load cases.
+            </li>
+            <li>
+              Raised the shaft&apos;s minimum factor of safety to 2.4 (target 1.5), with peak von Mises stress of 91.3 MPa concentrated at the hex-to-round shoulder.
+            </li>
+            <li>
+              Modeled the full drive module in SOLIDWORKS and traded off drivetrain layouts against packaging, cost, and serviceability.
+            </li>
+          </ul>
+        </section>
 
         {/* Project 1 */}
         <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
@@ -209,7 +276,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden p-3 flex flex-col items-center">
               <video
-                src="/videos/Director Video.mp4"
+                src="/videos/director-view.mp4"
                 controls
                 playsInline
                 className="w-full rounded-lg bg-zinc-900"
@@ -218,7 +285,7 @@ export default function Home() {
             </div>
             <div className="bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden p-3 flex flex-col items-center">
               <video
-                src="/videos/Member Video.mp4"
+                src="/videos/member-view.mp4"
                 controls
                 playsInline
                 className="w-full rounded-lg bg-zinc-900"

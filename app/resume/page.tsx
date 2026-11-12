@@ -1,5 +1,12 @@
-import React from "react";
+import type { Metadata } from "next";
 import Nav from "../components/Nav";
+
+export const metadata: Metadata = {
+  title: "Resume | Elliot Kaiser",
+  description:
+    "Resume of Elliot Kaiser — Mechanical Engineering student at the University of Toronto.",
+  alternates: { canonical: "/resume" },
+};
 
 // ---------- Resume content (edit here; layout below renders it) ----------
 
@@ -143,6 +150,7 @@ export default function Resume() {
 
         {/* Resume Header */}
         <header className="border-b border-zinc-800 pb-8 space-y-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white">Resume</h1>
           <p className="text-zinc-400 font-medium">U.S. &amp; Canadian Citizen</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-300">
             <span>206-707-2649</span>

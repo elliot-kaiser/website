@@ -8,6 +8,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://elliotkaiser.me"),
+  alternates: { canonical: "/" },
   title: "Elliot Kaiser | Mechanical Engineering Portfolio",
   description:
     "Portfolio of Elliot Kaiser — Mechanical Engineering student at the University of Toronto, with experience in embedded systems, CAD, and software development.",
@@ -31,7 +33,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${montserrat.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      {/* Extensions like Grammarly inject attributes on <body>; ignore those mismatches */}
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
